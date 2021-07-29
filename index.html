@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="quiz.js"></script>
+    <script src="manager.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div  id="quiz">
+    <div id="question"></div>
+    <button class="ant" onclick="chooseAns(this.id)" id="ans-1">1</button>
+    <button class="ant" onclick="chooseAns(this.id)" id="ans-2">2</button>
+    <button class="ant" onclick="chooseAns(this.id)" id="ans-3">3</button>
+    <button class="ant" onclick="chooseAns(this.id)" id="ans-4">4</button>
+</div>
+<button id="next" onclick="nextQuiz()">Next Quiz</button>
+<button id="restart">Reset</button>
+<button id="index" onclick="DeLeTe()">50/50</button>
+<audio controls autoplay>
+    <source src="AiLaTrieuPhu.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<script>
+    let quiz1 =new Quiz('Ai là người giàu nhất',['thức','vũ','anhIT Công ty','vân vân'],'vân vân');
+    let quiz2 =new Quiz('Ai sẽ là người nghèo nhất 2 năm tới',['nam','loan','ánh','hà'],'nam');
+    let gameManager= new Manager(2);
+    gameManager.addQuiz(quiz1)
+    gameManager.addQuiz(quiz2)
+    console.log(gameManager)
+    function displayQuiz(index){
+        document.getElementById('question').innerHTML =gameManager.quizs[index].question;
+        for (let i =1;i<=gameManager.quizs[index].answer.length; i++){
+            document.getElementById("ans-"+i).innerHTML = gameManager.quizs[index].answer[i-1]
+        }
+    }
+    function nextQuiz(){
+        gameManager.nextQuiz() //đổi câu hỏi
+        displayQuiz(gameManager.current)
+    }
+    function endGame(){
+        gameManager.endGame()
+        displayQuiz(gameManager.current)
+    }
+    function DeLeTe(){
+        gameManager.deleteQuiz()
+        displayQuiz(gameManager.current)
+    }
+    displayQuiz(0);
+    function chooseAns(id){
+        let ans =document.getElementById(id).innerHTML
+        gameManager.chooseAnswer(ans)
+        if (gameManager.checkAnswer(ans)){
+            nextQuiz()
+        }else {
+            endGame()
+        }
+    }
+
+</script>
+</body>
+</html>
