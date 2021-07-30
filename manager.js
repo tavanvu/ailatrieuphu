@@ -27,15 +27,14 @@ class Manager{
         }
     } //chuyển câu hỏi
     endGame(){
-        alert("bạn đã tl sai bạn sẽ phải chơi lại từ đầu")
-        this.current =0
+        alert("bạn đã trả lời sai bạn sẽ phải chơi lại từ đầu")
 
     }
     addQuiz(quiz){
         this.quizs.push(quiz)
     }//thêm phần tử vào mảng
-    deleteQuiz(index){
-        this.quizs[1].splice(index[1],1)
-        index.splice(1)
-    } //xóa phần tử khỏi mảng
-}
+    reTest(){
+        this.current =0
+    }
+
+} let gameManager = new Manager(2);

@@ -1,23 +1,36 @@
 div#quiz{
-    height: 300px;
-    width: 400px;
-    border: 1px solid;
-    background-color: aliceblue;
+    height: 500px;
+    width: 600px;
+    border: 1px solid aqua;
 }
-div#question{
+h2#question{
+    text-align: center;
+    border: 1px crimson;
     height: 100px;
     width: 100%;
-    background-color: antiquewhite;
+    background-color: red;
 }
-button.ant{
+
+@-webkit-keyframes my {
+    0% { color:red; }
+    50% { color: #fff;  }
+    100% { color: #F8CD0A;  }
+} button.ant{
+    cursor: auto;
+   text-decoration: red;
+    border-radius: 30px;
     width: 300px;
+    height: 50px;
     margin-bottom: 20px;
-    text-align: left;
+    text-align: center;
     margin-left: 40px;
     margin-top: 10px;
+    background-color: blue;
+    -webkit-animation: my 700ms infinite;
+    -moz-animation: my 700ms infinite;
+    -o-animation: my 700ms infinite;
+    animation: my 700ms infinite;
 }
 audio{
-    display: none;
-    overflow: auto;
-
+    overflow: hidden;
 }
